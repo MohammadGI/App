@@ -1,0 +1,11 @@
+<div *ngIf="employee" class="popup">
+  <h4>{{ employee.name }} - Details</h4>
+  <p>Position: {{ employee.position }}</p>
+  <p>Department: {{ employee.department }}</p>
+  <p>Rating: {{ employee.rating }}</p>
+  <h5>Performance History</h5>
+  <ul>
+    <li *ngFor="let rating of employee.performanceHistory">{{ rating }}</li>
+  </ul>
+  <button class="btn btn-secondary" (click)="closePopup()">Close</button>
+</div>

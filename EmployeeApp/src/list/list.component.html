@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <h3>Employee List</h3>
+  <input
+    [(ngModel)]="searchQuery"
+    (input)="search()"
+    placeholder="Search by name or department"
+    class="form-control mb-3"
+  />
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th (click)="sortList('name')">Name</th>
+        <th (click)="sortList('department')">Department</th>
+        <th>Position</th>
+        <th>Rating</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let employee of filteredEmployees"
+        (click)="viewDetails(employee)"
+      >
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.department }}</td>
+        <td>{{ employee.position }}</td>
+        <td>{{ employee.rating }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="editEmployee(employee)">
+            Edit
+          </button>
+          <button class="btn btn-danger" (click)="deleteEmployee(+employee.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-secondary" (click)="resetData()">Reset Data</button>
+</div>
